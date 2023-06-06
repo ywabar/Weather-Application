@@ -118,9 +118,7 @@ body{
     text-align: center;
     align-items: center;
     justify-content: center;
-    margin-top: -1px;
-    margin-left:-1px;
-    margin-right:-1px;
+    margin: -1px;
     border-bottom: 0px;
 }
 
