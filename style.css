@@ -1,0 +1,133 @@
+*{
+    margin: 0;
+    padding:0;
+    box-sizing: border-box;
+}
+
+body{
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    background:radial-gradient(circle at 49% 9%, rgba(255, 222, 12, 1) 0%, rgba(227, 52, 0, 1) 100%);
+    background-size: cover;
+    width: 100%;
+    height:49.5em;
+}
+
+.weather-header{
+    display:flex;
+    flex-direction: column;
+    width:100%;
+    height:9em;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    font-size: 2em;
+}
+
+.location, .temp{
+    font-size: 2em;
+}
+
+.header-stack{
+    display: flex;
+    flex-direction: column;
+}
+
+.header-row{
+    display: flex;
+    flex-direction: row;
+}
+
+.w-low{
+    padding-left: 1em;
+}
+
+
+.day-forecast{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    margin-top: 0.25em;
+    width: 90%;
+    margin-left: 5%;
+    margin-right: 5%;
+    border: 1px solid black;
+    padding-top: 1em;
+}
+
+.hours{
+    display: flex;
+    flex-direction: row;
+    margin-top: 1em;
+    margin-bottom: 1em;
+    margin-left:1em;
+    margin-right: 1em;
+    width: 100%;
+    overflow:scroll;
+}
+
+.time-section{
+    display: flex;
+    flex-direction: column;
+    width:20%;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+}
+
+.time, .t-icon, .t-temp{
+    margin-left: 1em;
+    margin-right: 1em;
+    width:20%;
+    padding-top: 0.25em;
+    padding-bottom: 0.25em;
+    width: 100%;
+    padding-top: 0.5em;
+    padding-bottom: 0.5em;
+}
+
+
+.week-forecast{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    width: 90%;
+    margin-left:5%;
+    margin-right:5%;
+    margin-top: 3em;
+    border:1px solid black;
+    padding-top: 1em;
+}
+
+.week{
+    display: flex;
+    flex-direction: column;
+    width:100%;
+    margin-top: 1em;
+}
+
+.week-day{
+    display: flex;
+    flex-direction: row;
+    padding-bottom: 1em;
+    padding-top: 1em;
+    border:1px solid black;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    margin-top: -1px;
+    margin-left:-1px;
+    margin-right:-1px;
+    margin-bottom:-0.459px;
+}
+
+.day, .day-icon, .day-temp{
+    margin-left: 1em;
+    margin-right: 1em;
+    width:20%;
+    padding-top: 0.25em;
+    padding-bottom: 0.25em;
+}
