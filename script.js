@@ -10,7 +10,7 @@ async function fetchWeatherAPI(city) {
     const data = await response.json();
     console.log(data);
 
-    const current_Temp = data.current.temp_f;
+    const current_Temp = Math.floor(data.current.temp_f);
     const current_Condition = data.current.condition.text;
     const hourly_Temp = data.forecast.forecastday[0].hour;
 
@@ -27,7 +27,7 @@ async function fetchWeatherAPI(city) {
         }
     }
 
-    return { current_Temp, current_Condition, max_Temp, min_Temp };
+    return { current_Temp, current_Condition };
   } catch (error) {
     console.log('Error fetching weather data:', error);
   }
