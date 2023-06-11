@@ -12,20 +12,20 @@ async function fetchWeatherAPI(city) {
 
     const current_Temp = Math.floor(data.current.temp_f);
     const current_Condition = data.current.condition.text;
-    const hourly_Temp = data.forecast.forecastday[0].hour;
+    // const hourly_Temp = data.forecast.forecastday[0].hour;
 
-    let max_Temp = hourly_Temp[0].temp_f;
-    let min_Temp = hourly_Temp[0].temp_f;
+    // let max_Temp = hourly_Temp[0].temp_f;
+    // let min_Temp = hourly_Temp[0].temp_f;
 
-    for (let i=1; i< hourly_Temp.length; i++) {
-        const temp = hourly_Temp[i].temp_f;
-        if (temp>max_Temp){
-            max_Temp = temp;
-        }
-        if (temp<min_Temp){
-            min_Temp = temp;
-        }
-    }
+    // for (let i=1; i< hourly_Temp.length; i++) {
+    //     const temp = hourly_Temp[i].temp_f;
+    //     if (temp>max_Temp){
+    //         max_Temp = temp;
+    //     }
+    //     if (temp<min_Temp){
+    //         min_Temp = temp;
+    //     }
+    // }
 
     return { current_Temp, current_Condition };
   } catch (error) {
