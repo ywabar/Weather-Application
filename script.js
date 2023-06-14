@@ -9,6 +9,8 @@ const key = '01ef8bab4d434e1fa82225911232205'; // key to Yemaj's API on weathera
 const current_apiUrl = 'https://api.weatherapi.com/v1/current.json'; // URL to weatherapi.com for current json
 const future_apiUrl = 'https://api.weatherapi.com/v1/forecast.json'; // URL to weatherapi.com for future json (changed)
 
+//test comment
+
 var city = "Fairfax";
 
 async function fetchWeatherAPI_current(city) {
