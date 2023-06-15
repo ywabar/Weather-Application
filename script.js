@@ -74,19 +74,50 @@ async function fetchHourlyForecast(city, date) {
     const hourData = hourlyForecast.map((hour) => ({
       time: (hour?.time || "").slice(11),
       temp: hour?.temp_f,
+      condition: hour?.condition?.text,
     }));
 
-    console.log(hourData);
+    return hourData;
   } catch (error) {
     console.error("Error fetching hourly forecast:", error);
     // Throw an error or return a meaningful value to handle the failure
     throw error;
   }
 }
+//hourData[2]['temp'];
+async function createHourlyForecast(city, date){
+  const hourData = await fetchHourlyForecast(city,date);
+  const hourDataLength = hourData.length;
 
+  const hoursDiv = document.createElement('div');
+  hoursDiv.className = 'hours';
 
+  for(let i = 0; i < hourDataLength; i++){
+    const timeSectionsDiv = document.createElement('div');
+    timeSectionsDiv.className = 'time-section';
+  
+    const timeDiv = document.createElement('div');
+    timeDiv.className = 'time';
+    timeDiv.textContent = hourData[i]['time'];
 
-fetchHourlyForecast(city, date)
+    const iconDiv = document.createElement('div');
+    iconDiv.className = 't-icon';
+    iconDiv.textContent = hourData[i]['condition'];
+  
+    const timeTempDiv = document.createElement('div');
+    timeTempDiv.className = 't-temp';
+    timeTempDiv.textContent = hourData[i]['temp'];;
+  
+    timeSectionsDiv.appendChild(timeDiv);
+    timeSectionsDiv.appendChild(iconDiv);
+    timeSectionsDiv.appendChild(timeTempDiv);
+    hoursDiv.appendChild(timeSectionsDiv);
+  }
+  const dayForecastElement = document.getElementById('dayForecast');
+  dayForecastElement.appendChild(hoursDiv);
+}
+
+createHourlyForecast(city, date)
 
 async function updateWeather(city) {
   //current
