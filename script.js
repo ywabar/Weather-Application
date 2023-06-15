@@ -10,7 +10,7 @@ const current_apiUrl = 'https://api.weatherapi.com/v1/current.json'; // URL to w
 const future_apiUrl = 'https://api.weatherapi.com/v1/forecast.json'; // URL to weatherapi.com for future json (changed)
 
 
-
+//commetn
 var city = "Fairfax";
 
 async function fetchWeatherAPI_current(city) {
