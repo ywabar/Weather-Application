@@ -65,15 +65,26 @@ async function fetchFullWeather(city, date) { // Added 'date' parameter
   return { min_Temp, max_Temp, icon, condition, average };
 }
 
-async function fetchHourlyForecast(city, date){
-  const data = await fetchWeatherAPI_future(city, date);
-  for (let i = 0; i < data?.forecast?.forecastday?.[0]?.hour?.length; i++) {
-    const hourTime = ((data?.forecast?.forecastday?.[0]?.hour?.[i]?.time || "").slice(11));
-    console.log(hourTime);
-    const hourTemp = data?.forecast?.forecastday?.[0]?.hour?.[i]?.temp_f;
-    console.log(hourTemp);
+async function fetchHourlyForecast(city, date) {
+  try {
+    const data = await fetchWeatherAPI_future(city, date);
+    console.log("Acquired API");
+
+    const hourlyForecast = data?.forecast?.forecastday?.[0]?.hour || [];
+    const hourData = hourlyForecast.map((hour) => ({
+      time: (hour?.time || "").slice(11),
+      temp: hour?.temp_f,
+    }));
+
+    console.log(hourData);
+  } catch (error) {
+    console.error("Error fetching hourly forecast:", error);
+    // Throw an error or return a meaningful value to handle the failure
+    throw error;
   }
 }
+
+
 
 fetchHourlyForecast(city, date)
 
