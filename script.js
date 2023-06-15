@@ -65,6 +65,18 @@ async function fetchFullWeather(city, date) { // Added 'date' parameter
   return { min_Temp, max_Temp, icon, condition, average };
 }
 
+async function fetchHourlyForecast(city, date){
+  const data = await fetchWeatherAPI_future(city, date);
+  for (let i = 0; i < data?.forecast?.forecastday?.[0]?.hour?.length; i++) {
+    const hourTime = ((data?.forecast?.forecastday?.[0]?.hour?.[i]?.time || "").slice(11));
+    console.log(hourTime);
+    const hourTemp = data?.forecast?.forecastday?.[0]?.hour?.[i]?.temp_f;
+    console.log(hourTemp);
+  }
+}
+
+fetchHourlyForecast(city, date)
+
 async function updateWeather(city) {
   //current
   const { current_Temp, current_Condition } = await fetchCurrentWeather(city);
@@ -86,7 +98,7 @@ async function updateWeather(city) {
   //current and future
   const { min_Temp, max_Temp, icon, condition, average } = await fetchFullWeather(city, date); // Passed 'date' to the function
 
-  //high temp
+  //low temp
   const low_Temp = document.getElementById("w-low_Text");
   low_Temp.innerHTML = min_Temp;
 

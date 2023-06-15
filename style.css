@@ -1,35 +1,41 @@
-*{
+* {
     margin: 0;
-    padding:0;
+    padding: 0;
     box-sizing: border-box;
-}
-
-html, body{
-    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-    width: 100%;
-    height:100vh;
-    overflow: hidden;
-    color:white;
-}
-.overlay {
-    position: block;
+  }
+  
+  html, body {
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     width: 100%;
     height: 100%;
-}
-
-.img{
+    overflow:scroll;
+    color: white;
+  }
+  
+  .overlay {
+    position:relative;
+    top: 0;
+    left: 0;
     width: 100%;
-    height: 50em;
+    height: 100%;
+    overflow: auto;
+  }
+  
+  .img {
+    width: 100%;
+    height: 100%;
     object-fit: cover;
-}
-
-.background{
-    position: relative;
+  }
+  
+  .background {
+    position:relative;
+    top: 0;
+    left: 0;
     width: 100%;
-    height: 50em;
-}
-
-.background::before {
+    height: 100%;
+  }
+  
+  .background::before {
     content: '';
     background-color: rgba(19, 18, 18, 0.75); /* Black with 70% opacity */
     position: absolute;
@@ -38,17 +44,22 @@ html, body{
     width: 100%;
     height: 100%;
   }
-
-.app-ui{
+  
+  .app-ui {
     position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      text-align: center;
-      align-items: center;
-      justify-content: center;
-      width: 95%;
-}
+    top: 50%;
+    left: 50%;
+    padding-bottom: 5em;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    width: 95%;
+    height: 100%;
+    overflow: auto;
+  }
+  
+  
 
 .weather-header{
     display:flex;
