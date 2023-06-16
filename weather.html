@@ -10,8 +10,17 @@
     <body>
         <div class="overlay">
             <div class="background">
-                <img class="img" src="/project1/assets/images/websiteimages/portrait.jpg">
+                <img class="img" src="/assets/images/websiteimages/portrait.jpg">
                 <div class="app-ui">
+                    <div class = "location">
+                        <div id = "errorcodes">Error Code</div>
+                        <div id = "location-input">
+                            <input class = "search-input" id = "search-input" placeholder="Location" title="Location" value = "Fairfax, VA" pattern="[A-Za-z\s]+" required/>
+                            <img class = "icon" id = "search-button" src="/assets/images/websiteimages/search-icon.png" alt="Search"/>
+                            
+
+                        </div>
+                    </div>
                     <div class="weather-header">
                         <div class="header-stack">
                             <div class="location" id="location_Text" >N/A</div>
@@ -45,22 +54,22 @@
                         </div>
                         <div class="week">
                             <div class="week-day">
-                                <div class="day">Today</div>
-                                <div class="day-icon">icon</div>
-                                <div class="day-temp">low temp</div>
-                                <div class="day-temp">high temp</div>
+                                <div class="day" id = "today_Day">Today</div>
+                                <div class="day-icon" id = "today_Icon"></div>
+                                <div class="day-temp" id = "today_LowTemp">low temp</div>
+                                <div class="day-temp" id = today_HighTemp >high temp</div>
                             </div>
                             <div class="week-day">
-                                <div class="day">Tomorrow</div>
-                                <div class="day-icon">icon</div>
-                                <div class="day-temp">low temp</div>
-                                <div class="day-temp">high temp</div>
+                                <div class="day" id = "tomorrow_Day">Tomorrow</div>
+                                <div class="day-icon" id = "tomorrow_Icon"></div>
+                                <div class="day-temp" id = "tomorrow_LowTemp">low temp</div>
+                                <div class="day-temp" id = "tomorrow_HighTemp">high temp</div>
                             </div>
                             <div class="week-day">
-                                <div class="day">Overmorrow</div>
-                                <div class="day-icon">icon</div>
-                                <div class="day-temp">low temp</div>
-                                <div class="day-temp">high temp</div>
+                                <div class="day" id = "ovtomorrow_Day">Overmorrow</div>
+                                <div class="day-icon" id = "ovtomorrow_Icon"></div>
+                                <div class="day-temp" id = "ovtomorrow_LowTemp">low temp</div>
+                                <div class="day-temp" id = "ovtomorrow_HighTemp">high temp</div>
                             </div>
                         </div>
                     </div>
