@@ -10,7 +10,7 @@ const current_apiUrl = 'https://api.weatherapi.com/v1/current.json'; // URL to w
 const future_apiUrl = 'https://api.weatherapi.com/v1/forecast.json'; // URL to weatherapi.com for future json (changed)
 
 
-
+//commetn
 var city = "Fairfax";
 
 async function fetchWeatherAPI_current(city) {
@@ -65,6 +65,60 @@ async function fetchFullWeather(city, date) { // Added 'date' parameter
   return { min_Temp, max_Temp, icon, condition, average };
 }
 
+async function fetchHourlyForecast(city, date) {
+  try {
+    const data = await fetchWeatherAPI_future(city, date);
+    console.log("Acquired API");
+
+    const hourlyForecast = data?.forecast?.forecastday?.[0]?.hour || [];
+    const hourData = hourlyForecast.map((hour) => ({
+      time: (hour?.time || "").slice(11),
+      temp: hour?.temp_f,
+      condition: hour?.condition?.text,
+    }));
+
+    return hourData;
+  } catch (error) {
+    console.error("Error fetching hourly forecast:", error);
+    // Throw an error or return a meaningful value to handle the failure
+    throw error;
+  }
+}
+//hourData[2]['temp'];
+async function createHourlyForecast(city, date){
+  const hourData = await fetchHourlyForecast(city,date);
+  const hourDataLength = hourData.length;
+
+  const hoursDiv = document.createElement('div');
+  hoursDiv.className = 'hours';
+
+  for(let i = 0; i < hourDataLength; i++){
+    const timeSectionsDiv = document.createElement('div');
+    timeSectionsDiv.className = 'time-section';
+  
+    const timeDiv = document.createElement('div');
+    timeDiv.className = 'time';
+    timeDiv.textContent = hourData[i]['time'];
+
+    const iconDiv = document.createElement('div');
+    iconDiv.className = 't-icon';
+    iconDiv.textContent = hourData[i]['condition'];
+  
+    const timeTempDiv = document.createElement('div');
+    timeTempDiv.className = 't-temp';
+    timeTempDiv.textContent = hourData[i]['temp'];;
+  
+    timeSectionsDiv.appendChild(timeDiv);
+    timeSectionsDiv.appendChild(iconDiv);
+    timeSectionsDiv.appendChild(timeTempDiv);
+    hoursDiv.appendChild(timeSectionsDiv);
+  }
+  const dayForecastElement = document.getElementById('dayForecast');
+  dayForecastElement.appendChild(hoursDiv);
+}
+
+createHourlyForecast(city, date)
+
 async function updateWeather(city) {
   //current
   const { current_Temp, current_Condition } = await fetchCurrentWeather(city);
@@ -86,7 +140,7 @@ async function updateWeather(city) {
   //current and future
   const { min_Temp, max_Temp, icon, condition, average } = await fetchFullWeather(city, date); // Passed 'date' to the function
 
-  //high temp
+  //low temp
   const low_Temp = document.getElementById("w-low_Text");
   low_Temp.innerHTML = min_Temp;
 
