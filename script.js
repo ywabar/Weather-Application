@@ -106,7 +106,7 @@ async function createHourlyForecast(city, date){
   
     const timeTempDiv = document.createElement('div');
     timeTempDiv.className = 't-temp';
-    timeTempDiv.textContent = hourData[i]['temp'];;
+    timeTempDiv.textContent = Math.floor(hourData[i]['temp']);;
   
     timeSectionsDiv.appendChild(timeDiv);
     timeSectionsDiv.appendChild(iconDiv);
